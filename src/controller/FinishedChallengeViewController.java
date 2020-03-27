@@ -44,12 +44,21 @@ public class FinishedChallengeViewController implements Initializable
     }
 
 
+    /**
+     * Affiche la table des scores correspondants au finished challenge
+     * Cette fonction est appelée lorsque l'utilisateur clique sur le bouton "Afficher les scores"
+     */
     public void onShowScoresButtonPressed(ActionEvent event)
     {
         listeScores.getItems().setAll(ControleurJeu.demanderMeilleursScores());
         listeScores.setVisible(true);
     }
 
+
+    /**
+     * Fonction pour changer de scene, homeView
+     * Cette fonction est appelée lorsque l'utilisateur clique sur le bouton "Back"
+     */
     public void onBackButtonPressed(ActionEvent event) throws IOException
     {
         Parent homeViewParent = FXMLLoader.load(getClass().getResource("../gui/homeView.fxml"));

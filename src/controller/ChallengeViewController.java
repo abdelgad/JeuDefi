@@ -28,7 +28,7 @@ public class ChallengeViewController implements Initializable
     @FXML private ProgressBar progressBar;
 
 
-    //Filter
+    //Filter de restriction à Integers sur les TextFields
     private UnaryOperator<TextFormatter.Change> integerFilter = change -> {
         String input = change.getText();
         if (input.matches("[0-9]*"))
@@ -47,6 +47,9 @@ public class ChallengeViewController implements Initializable
         this.nbErreursLabel.setText(Integer.toString(ControleurJeu.getNbErreurs()));
     }
 
+    /**
+     * Fonction executée lorsque l'utilisateur valide sa réponse d'une certaine opération
+     */
     public void OnValiderReponseButtonPressed(ActionEvent event) throws IOException
     {
         if(ControleurJeu.repondre(Integer.parseInt(reponseTextField.getText())))

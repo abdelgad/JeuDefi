@@ -21,11 +21,20 @@ public class Operation
         return operande2;
     }
 
+    /**
+     * Evaluer la réponse de l'instance courante de l'opération
+     * @param response la réponse à évaluer
+     * @return true si la réponse est juste, false sinon
+     */
     public boolean evaluer(int response)
     {
         return response == this.operande1 * this.operande2;
     }
 
+    /**
+     * retourne l'opération sous forme de String
+     * @return le String qui répresente l'opération
+     */
     public String toString()
     {
         return Integer.toString(operande1) + "×" + Integer.toString(operande2);

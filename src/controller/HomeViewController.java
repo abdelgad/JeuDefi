@@ -20,6 +20,7 @@ import java.util.function.UnaryOperator;
 public class HomeViewController implements Initializable
 {
 
+    //Le nom de l'utilisateur connecté
     private String connectedUsername;
 
     //Connected User label
@@ -40,7 +41,7 @@ public class HomeViewController implements Initializable
     @FXML private TextField domaine2MaxTextField;
 
 
-    //Filter
+    //Filter de restriction à Integers sur les TextFields
     private UnaryOperator<TextFormatter.Change> integerFilter = change -> {
         String input = change.getText();
         if (input.matches("[0-9]*"))
@@ -69,6 +70,10 @@ public class HomeViewController implements Initializable
         listeDefis.getItems().addAll(ControleurGestion.chercherListesDefis(connectedUsername));
     }
 
+    /**
+     * Crée un nouveau défi à partir des informations récuperées depuis les TextFields
+     * Cette fonction est appelée lorsque l'utilisateur clique sur le bouton "Créer"
+     */
     public void onNewDefiButtonPressed()
     {
         ControleurGestion.creerQuiz(
@@ -84,7 +89,9 @@ public class HomeViewController implements Initializable
         listeDefis.getItems().setAll(ControleurGestion.chercherListesDefis(this.connectedUsername));
     }
 
-    //Méthode pour changer la scene + lancer le défi selectionné
+    /**
+     * Change la scene et lance le défi selectionné
+     */
     public void onPlayButtonPushed(ActionEvent event) throws IOException
     {
         ControleurJeu.lancer(listeDefis.getSelectionModel().getSelectedItem().getNom(), connectedUsername);

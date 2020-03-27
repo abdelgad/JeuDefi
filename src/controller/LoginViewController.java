@@ -26,7 +26,9 @@ public class LoginViewController
     @FXML private PasswordField passwordField2SignUp;
 
 
-
+    /**
+     * Fonction executée lorsque l'utilisateur clique sur bouton "Login"
+     */
     public void onConfirmLoginButtonPressed(ActionEvent event) throws IOException
     {
         if(ControleurGestion.connect(userNameFieldLogin.getText(), passwordFieldLogin.getText()))
@@ -56,6 +58,9 @@ public class LoginViewController
     }
 
 
+    /**
+     * Fonction appelée lorsque l'utilisateur clique sur "SignUp"
+     */
     public void onConfirmSignUpButtonPressed(ActionEvent event)
     {
         if(passwordField1SignUp.getText().equals(passwordField2SignUp.getText()))
@@ -91,6 +96,10 @@ public class LoginViewController
 
     }
 
+    /**
+     * Fonction qui retourne le username de l'utilisateur connecté
+     * @return le username de l'utilsateur connecté sous forme de String
+     */
     static String getUsernameConnected()
     {
         return usernameConnected;

@@ -20,7 +20,6 @@ public class Defi
         this.nbOperations = nbOperations;
         this.domaineOperande1 = new Domain(domaineOperande1Min, domaineOperande1Max);
         this.domaineOperande2 = new Domain(domaineOperande2Min, domaineOperande2Max);
-        this.nbOperationCourant = nbOperations;
         this.bestScore = null;
     }
 
@@ -30,10 +29,12 @@ public class Defi
         this.nbOperations = nbOperations;
         this.domaineOperande1 = new Domain(domaineOperande1Min, domaineOperande1Max);
         this.domaineOperande2 = new Domain(domaineOperande2Min, domaineOperande2Max);
-        this.nbOperationCourant = nbOperations;
         this.bestScore = bestScore;
     }
 
+    /**
+     * Lancer une instance d'un défi, "remet le timer à 0" et le nombre d'erreurs à 0
+     */
     public void start()
     {
         this.startTime = System.currentTimeMillis();
@@ -41,14 +42,20 @@ public class Defi
         this.nbOperationCourant = 1;
     }
 
+    /**
+     *Fixer le temps de la fin d'une instance de défi
+     */
     public void updateFullTime()
     {
         this.fullTime = (System.currentTimeMillis() - this.startTime) / 1000.0;
     }
 
-    //TODO: meilleurTemps()
 
-
+    /**
+     * Générer une instance d'opération avec des operandes aléatoires qui respectent les domains définis
+     * dans le défi
+     * @return l'instance de l'opération génerée
+     */
     public Operation suivant()
     {
        return this.operationCourant = new Operation
@@ -58,16 +65,27 @@ public class Defi
                 );
     }
 
+    /**
+     * évaluer la réponse de l'opération courante
+     * @param reponse la réponse à évaluer
+     * @return true si la réponse est juste, false sinon
+     */
     public boolean repondre(int reponse)
     {
         return operationCourant.evaluer(reponse);
     }
 
+    /**
+     * Incrémente le nombre d'opération en cours
+     */
     public void incrementNbOperationCourant()
     {
         this.nbOperationCourant++;
     }
 
+    /**
+     * Incrémente le nombre d'erreurs d'une instance d'un défi
+     */
     public void incrementnbErreursCourant()
     {
         this.nbErreursCourant++;
