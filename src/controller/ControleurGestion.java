@@ -11,7 +11,6 @@ import java.util.LinkedList;
 
 public class ControleurGestion
 {
-
     /**
      * connecter un utilisateur
      * @param nom le username de l'utilisateur à login
@@ -38,7 +37,21 @@ public class ControleurGestion
     }
 
     /**
+     * Fonction pour vérifier si min < max
+     * @param min1
+     * @param max1
+     * @param min2
+     * @param max2
+     * @return true si min < max, false sinon
+     */
+    public static boolean verifyDomains(int min1, int max1, int min2,  int max2)
+    {
+        return min1 < max1 && max1 < min2 ;
+    }
+
+    /**
      * Créer un nouveau défi lié à l'utlisateur connecté
+     * Pré-condition: min1 < min2 && max1 < min2
      * @param nom le nom de défi
      * @param nb le nombre d'opérations dans le défi
      * @param min1 le min du premier domaine

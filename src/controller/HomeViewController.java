@@ -76,17 +76,33 @@ public class HomeViewController implements Initializable
      */
     public void onNewDefiButtonPressed()
     {
-        ControleurGestion.creerQuiz(
-                nomTextField.getText(),
-                Integer.parseInt(nbOperationsTextField.getText()),
+
+        if(ControleurGestion.verifyDomains(
                 Integer.parseInt(domaine1MinTextField.getText()),
                 Integer.parseInt(domaine1MaxTextField.getText()),
                 Integer.parseInt(domaine2MinTextField.getText()),
-                Integer.parseInt(domaine2MaxTextField.getText()),
-                this.connectedUsername
-        );
-
-        listeDefis.getItems().setAll(ControleurGestion.chercherListesDefis(this.connectedUsername));
+                Integer.parseInt(domaine2MaxTextField.getText())))
+        {
+            ControleurGestion.creerQuiz(
+                    nomTextField.getText(),
+                    Integer.parseInt(nbOperationsTextField.getText()),
+                    Integer.parseInt(domaine1MinTextField.getText()),
+                    Integer.parseInt(domaine1MaxTextField.getText()),
+                    Integer.parseInt(domaine2MinTextField.getText()),
+                    Integer.parseInt(domaine2MaxTextField.getText()),
+                    this.connectedUsername
+            );
+            listeDefis.getItems().setAll(ControleurGestion.chercherListesDefis(this.connectedUsername));
+        }
+        else
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Domains error");
+            alert.setHeaderText(null);
+            alert.setResizable(false);
+            alert.setContentText("The domains are not correct !");
+            alert.showAndWait();
+        }
     }
 
     /**
