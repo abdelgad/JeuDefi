@@ -42,6 +42,39 @@ public class DAOUser extends DAO<User>
         return user;
     }
 
+    //Find By Username
+    public User find(String username)
+    {
+        User user = null;
+        String query = "SELECT * FROM Users Where Username=?";
+        try(PreparedStatement prStat = connection.prepareStatement(query))
+        {
+            prStat.setString(1, username);
+
+            try(ResultSet resultSet = prStat.executeQuery())
+            {
+                if(resultSet.next())
+                {
+                    user = new User(
+                            resultSet.getString("Username"),
+                            resultSet.getString("Password")
+                    );
+                }
+            }
+        }
+        catch(SQLException e)
+        {
+            while(e != null)
+            {
+                //System.out.println("SQL State: " + e.getSQLState());
+                System.out.println("Message: " + e.getMessage());
+                //System.out.println("Error Code: " + e.getErrorCode());
+                e = e.getNextException();
+            }
+        }
+        return user;
+    }
+
     public boolean create(User user)
     {
         boolean estInseree = false;

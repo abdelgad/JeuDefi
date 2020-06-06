@@ -1,5 +1,7 @@
 package pojo;
 
+import java.util.ArrayList;
+
 public class Defi
 {
     private String nom;
@@ -12,15 +14,19 @@ public class Defi
     private int nbErreursCourant;
     private int nbOperationCourant;
     private Operation operationCourant;
+    private ArrayList<Score> scores;
+    private User user;
 
 
-    public Defi(String nom, int nbOperations, int domaineOperande1Min, int domaineOperande1Max, int domaineOperande2Min, int domaineOperande2Max)
+    public Defi(String nom, int nbOperations, int domaineOperande1Min, int domaineOperande1Max, int domaineOperande2Min, int domaineOperande2Max, User user)
     {
         this.nom = nom;
         this.nbOperations = nbOperations;
         this.domaineOperande1 = new Domain(domaineOperande1Min, domaineOperande1Max);
         this.domaineOperande2 = new Domain(domaineOperande2Min, domaineOperande2Max);
         this.bestScore = null;
+        this.scores = new ArrayList<Score>();
+        this.user = user;
     }
 
     public Defi(String nom, int nbOperations, int domaineOperande1Min, int domaineOperande1Max, int domaineOperande2Min, int domaineOperande2Max, Double bestScore)
@@ -30,6 +36,7 @@ public class Defi
         this.domaineOperande1 = new Domain(domaineOperande1Min, domaineOperande1Max);
         this.domaineOperande2 = new Domain(domaineOperande2Min, domaineOperande2Max);
         this.bestScore = bestScore;
+        this.scores = new ArrayList<Score>();
     }
 
     /**
@@ -154,6 +161,16 @@ public class Defi
     public Double getFullTime()
     {
         return fullTime;
+    }
+
+    public User getUser()
+    {
+        return user;
+    }
+
+    public void setUser(User user)
+    {
+        this.user = user;
     }
 }
 

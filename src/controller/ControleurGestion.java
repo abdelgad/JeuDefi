@@ -6,7 +6,6 @@ import dao.DAOUser;
 import pojo.Defi;
 import pojo.User;
 
-import javax.swing.text.TableView;
 import java.util.LinkedList;
 
 
@@ -52,7 +51,10 @@ public class ControleurGestion
     public static boolean creerQuiz(String nom, int nb, int min1, int max1, int min2, int max2, String username)
     {
         DAODefi myDAODefi = new DAODefi();
-        return myDAODefi.create(new Defi(nom, nb, min1, max1, min2, max2), username);
+        DAOUser myDAOUser = new DAOUser();
+        User user = myDAOUser.find(username);
+
+        return myDAODefi.create(new Defi(nom, nb, min1, max1, min2, max2, user));
     }
 
     /**

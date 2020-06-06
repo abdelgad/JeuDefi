@@ -12,7 +12,7 @@ import java.util.LinkedList;
 
 public class DAODefi extends DAO<Defi>
 {
-    public boolean create(Defi defi, String username)
+    public boolean create(Defi defi)
     {
         boolean estInseree = false;
         String query = "INSERT INTO Defis (Nom, nbOperations, DOMAIN1MIN, DOMAIN1MAX, DOMAIN2MIN, DOMAIN2MAX, REFUSER) VALUES (?,?,?,?,?,?,?)";
@@ -24,7 +24,7 @@ public class DAODefi extends DAO<Defi>
             prStat.setString(4, Integer.toString(defi.getDomaineOperande1().getMax()));
             prStat.setString(5, Integer.toString(defi.getDomaineOperande2().getMin()));
             prStat.setString(6, Integer.toString(defi.getDomaineOperande2().getMax()));
-            prStat.setString(7, username);
+            prStat.setString(7, defi.getUser().getUsername());
 
             int nbrLigneInsert = prStat.executeUpdate();
             if(nbrLigneInsert > 0)
