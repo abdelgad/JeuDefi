@@ -7,20 +7,19 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FinishedChallengeViewController">
    <children>
-      <Label layoutX="14.0" layoutY="89.0" prefHeight="33.0" prefWidth="146.0" text="Votre Score:">
+      <Label layoutX="14.0" layoutY="89.0" prefHeight="33.0" prefWidth="146.0" text="Your score:">
          <font>
             <Font size="27.0" />
          </font>
       </Label>
-      <Label layoutX="14.0" layoutY="131.0" prefHeight="33.0" prefWidth="213.0" text="Nombre d'erreurs:">
+      <Label layoutX="14.0" layoutY="131.0" prefHeight="33.0" prefWidth="213.0" text="Number of errors:">
          <font>
             <Font size="27.0" />
          </font>
       </Label>
-      <Label layoutX="190.0" layoutY="14.0" prefHeight="63.0" prefWidth="221.0" text="Bien joué !">
+      <Label layoutX="168.0" layoutY="14.0" prefHeight="63.0" prefWidth="268.0" text="Well played !">
          <font>
             <Font size="50.0" />
          </font>
@@ -35,11 +34,11 @@
             <Font size="27.0" />
          </font>
       </Label>
-      <Button layoutX="443.0" layoutY="94.0" mnemonicParsing="false" onAction="#onShowScoresButtonPressed" prefHeight="27.0" prefWidth="146.0" text="Afficher tous les scores" />
+      <Button layoutX="443.0" layoutY="94.0" mnemonicParsing="false" onAction="#onShowScoresButtonPressed" prefHeight="27.0" prefWidth="146.0" text="Show all scores" />
       <TableView fx:id="listeScores" layoutX="14.0" layoutY="193.0" prefHeight="171.0" prefWidth="575.0">
         <columns>
           <TableColumn fx:id="tempsColumn" prefWidth="168.0" text="Score" />
-          <TableColumn fx:id="nbErreursColumn" prefWidth="185.0" text="Nombre d'erreurs" />
+          <TableColumn fx:id="nbErreursColumn" prefWidth="185.0" text="Number of errors" />
             <TableColumn fx:id="dateColumn" minWidth="0.0" prefWidth="220.0" text="Date" />
         </columns>
       </TableView>

@@ -7,10 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.control.TextField;
-import javafx.scene.control.TextFormatter;
+import javafx.scene.control.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -52,7 +49,16 @@ public class ChallengeViewController implements Initializable
      */
     public void OnValiderReponseButtonPressed(ActionEvent event) throws IOException
     {
-        if(ControleurJeu.repondre(Integer.parseInt(reponseTextField.getText())))
+        if (reponseTextField.getText() == null || reponseTextField.getText().trim().isEmpty())
+        {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Empty response");
+            alert.setHeaderText(null);
+            alert.setResizable(false);
+            alert.setContentText("You can't enter an empty response");
+            alert.showAndWait();
+        }
+        else if(ControleurJeu.repondre(Integer.parseInt(reponseTextField.getText())))
         {
             progressBar.setProgress(ControleurJeu.getProgress());
             String nextOperation = ControleurJeu.suivant();
